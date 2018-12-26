@@ -1,4 +1,4 @@
-package com.springb.controller.config;
+package com.springb.util.namecalculator;
 
 public enum Gender {
     MAIL,

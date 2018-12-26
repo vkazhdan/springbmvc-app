@@ -1,4 +1,4 @@
-package com.springb.controller.config;
+package com.springb.util.namecalculator;
 
 import org.springframework.util.StringUtils;
 
@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 public class NameCalculator {
 
     private Gender gender;
-
 
     public NameCalculator(@NotNull Gender gender) {
         this.gender = gender;

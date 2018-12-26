@@ -1,6 +1,6 @@
 package com.springb.controller;
 
-import com.springb.controller.config.NameCalculator;
+import com.springb.util.namecalculator.NameCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
