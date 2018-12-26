@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Messages Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div>
+    <table class="message-table">
+        <tr th:each="message : ${messages}">
+            <td th:text="${message.id}"/>
+            <td th:text="${message.text}"/>
+        </tr>
+    </table>
+</div>
+</body>
+
+<style type="text/css">
+    .message-table, .message-table tr, .message-table td {
+        border: 1px solid black;
+    }
+
+    .message-table {
+        border-collapse: collapse;
+    }
+</style>
+</html>
