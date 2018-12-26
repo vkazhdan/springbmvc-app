@@ -30,7 +30,7 @@ public class MessageController {
         return MESSSAGE_PAGE;
     }
 
-    @GetMapping(path="/")
+    @GetMapping()
     public String getAll(Model model) {
         model.addAttribute("messages", messageRepository.findAll());
         return MESSSAGE_PAGE;
