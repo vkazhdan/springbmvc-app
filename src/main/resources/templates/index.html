@@ -1,16 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      <!--or xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" -->
 <head>
     <meta charset="UTF-8">
     <title>Index Page</title>
 </head>
 <body>
     <h2>Index Page</h2>
+    <p>
+        <div>LoggedIn v1: <span th:text="${#httpServletRequest.remoteUser != null}"></span></div>
+        <div>LoggedIn v2: <span sec:authorize="isAuthenticated()">true</span><span sec:authorize="!isAuthenticated()">false</span></div>
+        <div>LoggedIn v3: <span th:text="${user != null}"></span></div>
+    </p>
+    <p>
+        <div>User v1: [[${#httpServletRequest.remoteUser}]]</div>
+        <div>User v2: <span sec:authentication="name">NOT FOUND</span></div>
+        <div>User v3: <span th:text="${user}"></span></div>
+        <div>User v4: <span th:text="${currentUser}"></span></div>
+    </p>
+    <p>
+        <div>
+            Roles v2: <span sec:authorize="isAuthenticated()" sec:authentication="principal.authorities">NOT FOUND</span>
+        </div>
+    </p>
+    <p>
+        <div sec:authorize="hasRole('ADMIN')">
+            This content is only shown to administrators.
+        </div>
+
+        <div sec:authorize="hasRole('USER')">
+            This content is only shown to users.
+        </div>
+    </p>
+
+
+    <div th:if="${user == null}">
+        <a th:href="@{/login}">Login</a>
+    </div>
+    <div th:if="${user != null}">
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout"/>
+        </form>
+    </div>
+
     <main>
         <ul>
-            <li><a href="/greeting">Greeting</a></li>
-            <li><a href="/message">Messsage</a></li>
+            <li><a th:href="@{/greeting}">Greeting</a></li>
+            <li><a th:href="@{/message}">Messsage</a></li>
         </ul>
     </main>
+
+    <span th:text="${def}"></span>
 </body>
 </html>
