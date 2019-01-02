@@ -12,6 +12,13 @@
     <form th:action="@{/registration}" method="post">
         <div><label> User Name : <input type="text" name="username"/> </label></div>
         <div><label> Password: <input type="password" name="password"/> </label></div>
+        <div><label> Roles:
+            <select name="roles" multiple size="2">
+                <option selected>USER</option>
+                <option>ADMIN</option>
+            </select>
+        </label></div>
+
         <div><input type="submit" value="Register"/></div>
     </form>
 </body>
