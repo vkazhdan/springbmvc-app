@@ -36,7 +36,10 @@
 
 
     <div th:if="${user == null}">
-        <a th:href="@{/login}">Login</a>
+        <ul>
+            <li><a th:href="@{/login}">Login</a></li>
+            <li><a th:href="@{/registration}">Registration</a></li>
+        </ul>
     </div>
     <div th:if="${user != null}">
         <form th:action="@{/logout}" method="post">

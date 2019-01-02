@@ -1,5 +1,6 @@
 package com.springb.service;
 
+import com.springb.domain.User;
 import com.springb.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,5 +17,13 @@ public class UserService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		return userRepository.findByUsername(username);
+	}
+
+	public User createUser(User user) {
+		return userRepository.save(user);
+	}
+
+	public boolean isUserExistByUsername(String username) {
+		return userRepository.existsByUsername(username);
 	}
 }
