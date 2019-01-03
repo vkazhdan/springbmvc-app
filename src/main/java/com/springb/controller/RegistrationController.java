@@ -4,6 +4,7 @@ import com.springb.domain.Role;
 import com.springb.domain.User;
 import com.springb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
@@ -17,6 +18,9 @@ public class RegistrationController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/registration")
     public String registration(Model model) {
@@ -39,6 +43,7 @@ public class RegistrationController {
 
         // Create
         user.setActive(true);
+        user.setPassword(passwordEncoder.encode(user.getPassword())); // Encode password
         userService.createUser(user);
 
         return "redirect:/login";
