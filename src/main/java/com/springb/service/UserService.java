@@ -19,7 +19,15 @@ public class UserService implements UserDetailsService {
 		return userRepository.findByUsername(username);
 	}
 
+	public User getById(Long id) {
+		return userRepository.findById(id).orElse(null);
+	}
+
 	public User createUser(User user) {
+		return userRepository.save(user);
+	}
+
+	public User updateUser(User user) {
 		return userRepository.save(user);
 	}
 

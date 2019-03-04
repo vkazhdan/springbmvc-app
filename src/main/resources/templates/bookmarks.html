@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      <!--or xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" -->
+<head>
+    <meta charset="UTF-8">
+    <title>Bookmarks Page</title>
+</head>
+<body>
+    <h2>Bookmarks Page</h2>
+
+    <form th:action="@{/bookmarks/add}" method="POST">
+        <bold>New Bookmark:</bold>
+        <table>
+            <tr>
+                <td>Title: </td>
+                <td><input type="text" name="title"/></td>
+            </tr>
+            <tr>
+                <td>Url: </td>
+                <td><input type="text" name="url"/></td>
+            </tr>
+        </table>
+
+        <div><input type="submit" value="Add"/></div>
+    </form>
+
+    <table class="bookmarks-table">
+        <tr th:each="bookmark : ${bookmarks}">
+            <td th:text="${bookmark.id}"/>
+            <td th:text="${bookmark.title}"/>
+            <td th:text="${bookmark.url}"/>
+            <td>
+                <form th:action="@{/bookmarks/delete}" method="POST">
+                    <input type="hidden" name="bookmarkId" th:value="${bookmark.id}">
+                    <input type="submit" value=" X "/>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+
+    <style type="text/css">
+        .bookmarks-table, .bookmarks-table tr, .bookmarks-table td {
+            border: 1px solid black;
+        }
+
+        .bookmarks-table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+</style>
+</body>
+
+</html>
