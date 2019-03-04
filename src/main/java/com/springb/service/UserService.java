@@ -23,11 +23,11 @@ public class UserService implements UserDetailsService {
 		return userRepository.findById(id).orElse(null);
 	}
 
-	public User createUser(User user) {
+	public User create(User user) {
 		return userRepository.save(user);
 	}
 
-	public User updateUser(User user) {
+	public User update(User user) {
 		return userRepository.save(user);
 	}
 

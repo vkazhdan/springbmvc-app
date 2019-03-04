@@ -1,6 +1,5 @@
 package com.springb.controller;
 
-import com.springb.domain.Role;
 import com.springb.domain.User;
 import com.springb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.Collections;
 
 @Controller
 public class RegistrationController {
@@ -44,7 +41,7 @@ public class RegistrationController {
         // Create
         user.setActive(true);
         user.setPassword(passwordEncoder.encode(user.getPassword())); // Encode password
-        userService.createUser(user);
+        userService.create(user);
 
         return "redirect:/login";
     }
